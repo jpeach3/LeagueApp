@@ -1,9 +1,9 @@
 package com.company;
-import net.rithms.riot.api.ApiConfig;
-import net.rithms.riot.api.RiotApi;
-import net.rithms.riot.api.RiotApiException;
-import net.rithms.riot.api.endpoints.summoner.dto.Summoner;
-import net.rithms.riot.constant.Platform;
+        import net.rithms.riot.api.ApiConfig;
+        import net.rithms.riot.api.RiotApi;
+        import net.rithms.riot.api.RiotApiException;
+        import net.rithms.riot.api.endpoints.summoner.dto.Summoner;
+        import net.rithms.riot.constant.Platform;
 
 public class Main {
 
