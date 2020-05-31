@@ -1,34 +1,65 @@
 package com.company;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import net.rithms.riot.api.ApiConfig;
 import net.rithms.riot.api.RiotApi;
-import net.rithms.riot.api.RiotApiException;
 import net.rithms.riot.api.endpoints.summoner.dto.Summoner;
 import net.rithms.riot.constant.Platform;
+import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
+
 public class Output {
 
-    Data[] data = new Data[] {
-          new Data(1,"gold2", "gold3", "gold4", null, null),
-            new Data(2,"gold4", "gold17", "gold3", null, null)
-    };
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static FileWriter file;
 
-    public void createJsonDoc() {
-            System.out.println(gson.toJson(data));
+
+    public void write() {
+        JSONObject obj = new JSONObject();
+        obj.put("ranked_solo", "gold1");
+        obj.put("ranked_flex", "gold2");
+        obj.put("ranked_tft", "gold3");
+
+        JSONObject matchhistory = new JSONObject();
+        JSONObject game_1 = new JSONObject();
+        JSONObject summoner_1 = new JSONObject();
+        JSONObject summoner_2 = new JSONObject();
+
+        summoner_1.put("champion", "annie");
+        summoner_1.put("sumName", "Starmental");
+        summoner_1.put("stats", "10/0/0");
+        summoner_1.put("cs", "0");
+
+        summoner_2.put("champion", "ekko");
+        summoner_2.put("sumName", "DasTrek");
+        summoner_2.put("stats", "100/0/0");
+        summoner_2.put("cs", "0");
+
+        game_1.put("summoner_1", summoner_1);
+        game_1.put("summoner_2", summoner_2);
+
+        matchhistory.put("game_1", game_1);
+
+        obj.put("matchhistory", matchhistory);
+        try {
+            file = new FileWriter("Jsontest.json");
+            file.write(obj.toJSONString());
+            System.out.println("wrote");
+        } catch (IOException e) {
+            System.out.println("error");
+            e.printStackTrace();
+        } finally {
+            try {
+                file.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
-
-
     public void sumInfo(String sumName) {
         // riot api code
         try {
-            ApiConfig config = new ApiConfig().setKey("RGAPI-57d96f99-0d3a-4d23-b286-9bbd5a20dd0f");
+            ApiConfig config = new ApiConfig().setKey("RGAPI-c6a73b8e-fb98-4a61-b4d2-5d8068446fb5");
             RiotApi api = new RiotApi(config);
 
 

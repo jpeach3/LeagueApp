@@ -42,3 +42,7 @@ Enter **SumName**
 
     Java Backend
     React Frontend
+    
+**React**
+`https://www.robinwieruch.de/react-hooks-fetch-data`
+`https://medium.com/@Zwenza/functional-vs-class-components-in-react-231e3fbd7108`
