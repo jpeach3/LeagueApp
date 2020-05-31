@@ -1,12 +1,19 @@
 package com.company;
 import net.rithms.riot.api.ApiConfig;
 import net.rithms.riot.api.RiotApi;
+import net.rithms.riot.api.endpoints.match.MatchApiMethod;
+import net.rithms.riot.api.endpoints.match.dto.Match;
+import net.rithms.riot.api.endpoints.match.dto.MatchList;
+import net.rithms.riot.api.endpoints.match.dto.Player;
+import net.rithms.riot.api.endpoints.match.methods.GetMatchListByAccountId;
 import net.rithms.riot.api.endpoints.summoner.dto.Summoner;
 import net.rithms.riot.constant.Platform;
 import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
+
+import static net.rithms.riot.constant.Platform.EUW;
 
 
 public class Output {
@@ -64,13 +71,16 @@ public class Output {
 
 
             // output in the java console
-            Summoner summoner = api.getSummonerByName(Platform.EUW, sumName);
-            System.out.println("Name: " + summoner.getName());
-            System.out.println("Summoner ID: " + summoner.getId());
-            System.out.println("Account ID: " + summoner.getAccountId());
-            System.out.println("PUUID: " + summoner.getPuuid());
-            System.out.println("Summoner Level: " + summoner.getSummonerLevel());
-            System.out.println("Profile Icon ID: " + summoner.getProfileIconId());
+            Summoner summoner = api.getSummonerByName(EUW, sumName);
+            //System.out.println("Name: " + summoner.getName());
+         //   System.out.println("Summoner ID: " + summoner.getId());
+           // System.out.println("Account ID: " + summoner.getAccountId());
+            //System.out.println("PUUID: " + summoner.getPuuid());
+            //System.out.println("Summoner Level: " + summoner.getSummonerLevel());
+            //System.out.println("Profile Icon ID: " + summoner.getProfileIconId());
+
+            MatchList matchList = api.getMatchListByAccountId(EUW, summoner.getAccountId());
+            System.out.println(matchList.getMatches());
         }catch (Exception e) {
             System.out.println("Error connecting to the Riot api");
         }
