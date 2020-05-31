@@ -12,6 +12,6 @@ public class Main {
         String sumName = in.sumName();
         Output out = new Output();
         out.sumInfo(sumName);
-
+        out.createJsonDoc();
     }
 }
