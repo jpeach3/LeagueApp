@@ -66,7 +66,7 @@ public class Output {
     public void sumInfo(String sumName) {
         // riot api code
         try {
-            ApiConfig config = new ApiConfig().setKey("RGAPI-c6a73b8e-fb98-4a61-b4d2-5d8068446fb5");
+            ApiConfig config = new ApiConfig().setKey("RGAPI-d37a4f8f-be19-4f75-8372-99d842921d70");
             RiotApi api = new RiotApi(config);
 
 
